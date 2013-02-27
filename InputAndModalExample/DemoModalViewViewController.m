@@ -10,49 +10,41 @@
 
 @interface DemoModalViewViewController ()  <UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UITextField *textField;
 
+- (IBAction)saveEdit:(id)sender;
+- (IBAction)cancelEdit:(id)sender;
 
 @end
 
 @implementation DemoModalViewViewController
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     _textField.text = _text;
-	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark Actions
+
+- (IBAction)saveEdit:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)saveEdit:(id)sender {
     [self.editDelgate savedEdit:_textField.text];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (IBAction)cancelEdit:(id)sender {
+- (IBAction)cancelEdit:(id)sender
+{
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     
     [textField resignFirstResponder];
-
     return YES;
 }
+
 @end

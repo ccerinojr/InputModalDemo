@@ -14,14 +14,7 @@
 
 @interface DemoModalViewViewController : UIViewController
 
-- (IBAction)saveEdit:(id)sender;
-- (IBAction)cancelEdit:(id)sender;
-
 @property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) IBOutlet UITextField *textField;
-@property (strong, nonatomic) NSObject<ItemEditDelegate>* editDelgate;
-
-
-
+@property (weak, nonatomic) NSObject<ItemEditDelegate>* editDelgate;
 
 @end
