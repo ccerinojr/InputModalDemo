@@ -9,10 +9,16 @@
 #import "DemoViewController.h"
 #import "DemoModalViewViewController.h"
 
-@interface DemoViewController () <ItemEditDelegate>
+@interface DemoViewController ()  <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ItemEditDelegate>
 {
     NSMutableArray *_items;
 }
+
+- (IBAction)addText:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITableView *theTableView;
+@property (weak, nonatomic) IBOutlet UITextField *aTextField;
+
 @end
 
 @implementation DemoViewController
@@ -21,13 +27,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _items = [[NSMutableArray alloc] initWithObjects:@"Add Items to the Table",
-                  @"This app is s1ck", nil];
-    
+    _items = [[NSMutableArray alloc] initWithObjects:@"Add Items to the Table", @"This app is s1ck", nil];
 }
--(void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
+
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];    
     [self.theTableView reloadData];
 }
 

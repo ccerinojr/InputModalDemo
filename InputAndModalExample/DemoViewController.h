@@ -9,14 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DemoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
-{
-}
-- (IBAction)addText:(id)sender;
-
-@property (strong, nonatomic) IBOutlet UITableView *theTableView;
-@property (strong, nonatomic) IBOutlet UITextField *aTextField;
-
-
+@interface DemoViewController : UIViewController
 
 @end
