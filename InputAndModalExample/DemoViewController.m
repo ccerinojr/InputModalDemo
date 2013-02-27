@@ -18,20 +18,6 @@
 @implementation DemoViewController
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_items count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
-   
-   cell.textLabel.text =  [_items objectAtIndex: indexPath.row];
-
-    return cell;
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -78,10 +64,45 @@
     return YES;
 }
 
-- (IBAction)addText:(id)sender {
+- (IBAction)addText:(id)sender
+{
     [_items addObject:self.aTextField.text];
     [self.theTableView reloadData];
 }
+
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+   return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   return [_items count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
+   
+   cell.textLabel.text =  [_items objectAtIndex: indexPath.row];
+   
+   return cell;
+}
+
+
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   if (editingStyle == UITableViewCellEditingStyleDelete)
+   {
+      [_items removeObjectAtIndex:indexPath.row];
+      [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+   }
+}
+
 @end
 
 

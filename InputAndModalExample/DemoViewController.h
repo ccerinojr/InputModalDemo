@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DemoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
+@interface DemoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
 }
 - (IBAction)addText:(id)sender;
