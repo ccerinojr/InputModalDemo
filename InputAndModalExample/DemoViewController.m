@@ -7,7 +7,6 @@
 //
 
 #import "DemoViewController.h"
-#import "DemoCell.h"
 #import "DemoModalViewViewController.h"
 
 @interface DemoViewController () <ItemEditDelegate>
@@ -25,16 +24,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DemoCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
-    if (!cell)
-    {
-        cell = [[DemoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCell"];
-    }
-    
-    cell.itemInfo.text =  [_items objectAtIndex: indexPath.row];
-    
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
+   
+   cell.textLabel.text =  [_items objectAtIndex: indexPath.row];
+
     return cell;
 }
 
