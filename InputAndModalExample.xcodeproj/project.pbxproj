@@ -18,6 +18,8 @@
 		940D065416DE50E60037E95F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940D065316DE50E60037E95F /* Default-568h@2x.png */; };
 		940D065716DE50E60037E95F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940D065516DE50E60037E95F /* MainStoryboard.storyboard */; };
 		940D065A16DE50E60037E95F /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D065916DE50E60037E95F /* DemoViewController.m */; };
+		940D066216DE56850037E95F /* DemoModalViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D066116DE56850037E95F /* DemoModalViewViewController.m */; };
+		940D066916DE5A880037E95F /* DemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D066816DE5A880037E95F /* DemoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		940D065616DE50E60037E95F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		940D065816DE50E60037E95F /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		940D065916DE50E60037E95F /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		940D066016DE56850037E95F /* DemoModalViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModalViewViewController.h; sourceTree = "<group>"; };
+		940D066116DE56850037E95F /* DemoModalViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModalViewViewController.m; sourceTree = "<group>"; };
+		940D066716DE5A880037E95F /* DemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell.h; sourceTree = "<group>"; };
+		940D066816DE5A880037E95F /* DemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +92,12 @@
 				940D064C16DE50E60037E95F /* DemoAppDelegate.h */,
 				940D064D16DE50E60037E95F /* DemoAppDelegate.m */,
 				940D065516DE50E60037E95F /* MainStoryboard.storyboard */,
+				940D066716DE5A880037E95F /* DemoCell.h */,
+				940D066816DE5A880037E95F /* DemoCell.m */,
 				940D065816DE50E60037E95F /* DemoViewController.h */,
 				940D065916DE50E60037E95F /* DemoViewController.m */,
+				940D066016DE56850037E95F /* DemoModalViewViewController.h */,
+				940D066116DE56850037E95F /* DemoModalViewViewController.m */,
 				940D064416DE50E60037E95F /* Supporting Files */,
 			);
 			path = InputAndModalExample;
@@ -177,6 +187,8 @@
 				940D064A16DE50E60037E95F /* main.m in Sources */,
 				940D064E16DE50E60037E95F /* DemoAppDelegate.m in Sources */,
 				940D065A16DE50E60037E95F /* DemoViewController.m in Sources */,
+				940D066216DE56850037E95F /* DemoModalViewViewController.m in Sources */,
+				940D066916DE5A880037E95F /* DemoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +265,7 @@
 		940D065E16DE50E60037E95F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InputAndModalExample/InputAndModalExample-Prefix.pch";
 				INFOPLIST_FILE = "InputAndModalExample/InputAndModalExample-Info.plist";
@@ -264,6 +277,7 @@
 		940D065F16DE50E60037E95F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InputAndModalExample/InputAndModalExample-Prefix.pch";
 				INFOPLIST_FILE = "InputAndModalExample/InputAndModalExample-Info.plist";

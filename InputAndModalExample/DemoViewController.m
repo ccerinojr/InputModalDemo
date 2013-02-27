@@ -7,23 +7,88 @@
 //
 
 #import "DemoViewController.h"
+#import "DemoCell.h"
+#import "DemoModalViewViewController.h"
 
-@interface DemoViewController ()
-
+@interface DemoViewController () <ItemEditDelegate>
+{
+    NSMutableArray *_items;
+}
 @end
 
 @implementation DemoViewController
 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_items count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DemoCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
+    if (!cell)
+    {
+        cell = [[DemoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCell"];
+    }
+    
+    cell.itemInfo.text =  [_items objectAtIndex: indexPath.row];
+    
+    
+    return cell;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    _items = [[NSMutableArray alloc] initWithObjects:@"Add Items to the Table",
+                  @"This app is s1ck", nil];
+    
 }
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.theTableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"EditItem"])
+	{
+        DemoModalViewViewController* editViewController = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.theTableView indexPathForSelectedRow];
+        editViewController.text =  [_items objectAtIndex:indexPath.row];
+        editViewController.editDelgate = self;
+    }  
+}
+
+-(void)savedEdit:(NSString *)text {
+    NSIndexPath *indexPath = [self.theTableView indexPathForSelectedRow];
+    [_items replaceObjectAtIndex:indexPath.row withObject:text];
+    
+    [self.theTableView reloadData];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    
+    return YES;
+}
+
+- (IBAction)addText:(id)sender {
+    [_items addObject:self.aTextField.text];
+    [self.theTableView reloadData];
+}
 @end
+
+

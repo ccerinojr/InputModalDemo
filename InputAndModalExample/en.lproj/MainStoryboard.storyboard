@@ -1,21 +1,146 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Demo View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="DemoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hSE-Ak-xdc">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="70" id="uWU-Qc-bZi" customClass="DemoCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPF-NO-i5D">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="174" id="OjH-A0-FfR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="sPF-NO-i5D" firstAttribute="top" secondItem="uWU-Qc-bZi" secondAttribute="top" constant="24" id="1he-NM-Aey"/>
+                                            <constraint firstItem="sPF-NO-i5D" firstAttribute="centerX" secondItem="uWU-Qc-bZi" secondAttribute="centerX" type="default" id="DxI-50-oGv"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="itemInfo" destination="sPF-NO-i5D" id="WPh-T9-1Q5"/>
+                                            <segue destination="ubu-ea-jGE" kind="modal" identifier="EditItem" id="Ovr-2y-mSG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="TvU-dX-GfV"/>
+                                    <outlet property="delegate" destination="2" id="vIo-G4-2sz"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbY-GO-NtB">
+                                <items>
+                                    <navigationItem id="jYu-kW-PMW">
+                                        <nil key="title"/>
+                                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="B8g-Xe-hyg">
+                                            <rect key="frame" x="49" y="7" width="222" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="2" id="5oX-Gv-ziD"/>
+                                            </connections>
+                                        </textField>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0GM-f7-KQq">
+                                            <connections>
+                                                <action selector="addText:" destination="2" id="sDj-vc-PZV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hSE-Ak-xdc" firstAttribute="top" secondItem="EbY-GO-NtB" secondAttribute="bottom" type="default" id="3zZ-dN-9QA"/>
+                            <constraint firstItem="EbY-GO-NtB" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="5vf-Wd-oKp"/>
+                            <constraint firstItem="EbY-GO-NtB" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="9hG-gM-OzR"/>
+                            <constraint firstItem="hSE-Ak-xdc" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="Moy-y3-xuG"/>
+                            <constraint firstItem="hSE-Ak-xdc" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="eMJ-rq-3yI"/>
+                            <constraint firstItem="EbY-GO-NtB" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="jZl-uY-lnd"/>
+                            <constraint firstItem="hSE-Ak-xdc" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ves-k7-q4t"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aTextField" destination="B8g-Xe-hyg" id="Wsa-sR-Fow"/>
+                        <outlet property="theTableView" destination="hSE-Ak-xdc" id="SXe-7R-Pok"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-78" y="39"/>
+        </scene>
+        <!--Demo Modal View View Controller-->
+        <scene sceneID="6A3-gN-Ihb">
+            <objects>
+                <viewController id="ubu-ea-jGE" customClass="DemoModalViewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gGU-dF-07X">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tp5-EB-Yvm">
+                                <items>
+                                    <navigationItem title="Edit" id="5BP-V6-hsE">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1nk-MS-WTn">
+                                            <connections>
+                                                <action selector="cancelEdit:" destination="ubu-ea-jGE" id="e6Z-fx-gpi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Kz7-JJ-1i1">
+                                            <connections>
+                                                <action selector="saveEdit:" destination="ubu-ea-jGE" id="Hu0-kS-FQo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bj-D8-YZz">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="wYt-Qd-Gmv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ubu-ea-jGE" id="DEN-Yo-GT4"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Bj-D8-YZz" firstAttribute="centerX" secondItem="tp5-EB-Yvm" secondAttribute="centerX" type="default" id="9tg-yT-aRe"/>
+                            <constraint firstItem="tp5-EB-Yvm" firstAttribute="top" secondItem="gGU-dF-07X" secondAttribute="top" type="default" id="DDQ-jy-vp3"/>
+                            <constraint firstItem="tp5-EB-Yvm" firstAttribute="trailing" secondItem="gGU-dF-07X" secondAttribute="trailing" type="default" id="WRD-um-ScQ"/>
+                            <constraint firstItem="3Bj-D8-YZz" firstAttribute="top" secondItem="gGU-dF-07X" secondAttribute="top" constant="148" id="l2S-qT-zjA"/>
+                            <constraint firstItem="tp5-EB-Yvm" firstAttribute="leading" secondItem="gGU-dF-07X" secondAttribute="leading" type="default" id="ovw-b8-Wal"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="3Bj-D8-YZz" id="BSW-r4-qJS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3dB-oc-Wz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="42"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
