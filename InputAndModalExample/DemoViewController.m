@@ -33,9 +33,10 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];    
-    [self.theTableView reloadData];
+    [super viewWillAppear:animated];
+   self.aTextField.placeholder = @"Add items by typing text here.";
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -48,27 +49,25 @@
     }  
 }
 
--(void)savedEdit:(NSString *)text {
+
+#pragma mark ItemEditDelegate
+
+-(void)savedEdit:(NSString *)text
+{
     NSIndexPath *indexPath = [self.theTableView indexPathForSelectedRow];
     [_items replaceObjectAtIndex:indexPath.row withObject:text];
-    
     [self.theTableView reloadData];
 }
 
+#pragma mark UITextFieldDelegate
 
-- (void)didReceiveMemoryWarning
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [super didReceiveMemoryWarning];
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
     [textField resignFirstResponder];
-    
-    
     return YES;
 }
+
+#pragma mark Actions
 
 - (IBAction)addText:(id)sender
 {
